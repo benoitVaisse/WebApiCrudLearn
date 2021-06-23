@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebApiCrudLearn.Repository
 {
-    public interface IRepositoryBase <T>
+    public interface IRepositoryBase <T> where T : class
     {
         Task<ICollection<T>> FindAllAsync();
 
