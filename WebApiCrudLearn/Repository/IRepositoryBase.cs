@@ -7,14 +7,14 @@ namespace WebApiCrudLearn.Repository
 {
     public interface IRepositoryBase <T>
     {
-        Task<IEnumerable<T>> FindAll();
+        Task<ICollection<T>> FindAllAsync();
 
-        Task<T> Get();
+        Task<T> GetAsync(int id);
 
-        Task<T> Create(T entity);
+        Task<T> CreateAsync(T entity);
 
-        Task<T> Update(T entity);
+        Task<T> UpdateAsync(T entity);
 
-        Task<T> Delete(T entity);
+        Task<T> DeleteAsync(T entity);
     }
 }

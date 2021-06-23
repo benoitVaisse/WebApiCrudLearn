@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,29 +17,35 @@ namespace WebApiCrudLearn.Repository
             this._context = context;
         }
 
-        public Task<Employe> Create(Employe entity)
+        public async Task<Employe> CreateAsync(Employe entity)
         {
-            throw new NotImplementedException();
+            this._context.Employes.Add(entity);
+            await this._context.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<Employe> Delete(Employe entity)
+        public async Task<Employe> DeleteAsync(Employe entity)
         {
-            throw new NotImplementedException();
+            this._context.Employes.Remove(entity);
+            await this._context.SaveChangesAsync();
+            return entity;
         }
 
-        public async Task<IEnumerable<Employe>> FindAll()
+        public async Task<ICollection<Employe>> FindAllAsync()
         {
-            throw new NotImplementedException();
+            return await this._context.Employes.ToListAsync();
         }
 
-        public Task<Employe> Get()
+        public async Task<Employe> GetAsync(int id)
         {
-            throw new NotImplementedException();
+            return await this._context.Employes.FindAsync(id);
         }
 
-        public Task<Employe> Update(Employe entity)
+        public async Task<Employe> UpdateAsync(Employe entity)
         {
-            throw new NotImplementedException();
+            this._context.Employes.Update(entity);
+            await this._context.SaveChangesAsync();
+            return entity;
         }
     }
 }
