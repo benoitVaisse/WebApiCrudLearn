@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApiCrudLearn.Data;
+using WebApiCrudLearn.Repository;
 
 namespace WebApiCrudLearn.ExtentionsMethodes
 {
@@ -47,6 +48,7 @@ namespace WebApiCrudLearn.ExtentionsMethodes
 
         public static IServiceCollection AddDependencyInjectionRepositories(this IServiceCollection services)
         {
+            services.AddScoped<IRepositoryEmploye, RepositoryEmploye>();
             return services;
         }
 
