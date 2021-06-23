@@ -38,7 +38,7 @@ namespace WebApiCrudLearn.Repository
 
         public async Task<Employe> GetAsync(int id)
         {
-            return await this._context.Employes.FindAsync(id);
+            return await this._context.Employes.AsNoTracking().Where(e=>e.Id == id).FirstOrDefaultAsync();
         }
 
         public async Task<Employe> UpdateAsync(Employe entity)
